@@ -1,0 +1,14 @@
+server:
+  port: 8333
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/erp?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    data-username: root
+    data-password: Jack123456!
+
+
+appInfo:
+  appVersion: 1.0
