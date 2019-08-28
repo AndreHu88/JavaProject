@@ -4,26 +4,20 @@ import com.jack.hrmanagement.Dao.UserDao;
 import com.jack.hrmanagement.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class UserService {
+import javax.jws.soap.SOAPBinding;
 
-    @Autowired
-    private UserDao userDao;
+public interface UserService {
 
     /**
      * 根据名字查找用户
      */
-    public User selectUserByName(String username) {
-        return userDao.searchUserByUsername(username);
-    }
+    User selectUserByName(String userName);
 
 
     /**
-     *  用户登录
+     *  用户注册
      */
-    public boolean userLogin(String username, String password) {
-
-        return userDao.userLogin(username, password);
-    }
+    User userRegister(User user);
 
 
 }

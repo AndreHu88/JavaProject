@@ -2,11 +2,12 @@ package com.jack.hrmanagement.Common;
 
 public enum RequestCode implements ErrorCode {
 
-    SUCCESS(200, "操作成功"),
-    FAILED(500, "操作失败"),
-    VALIDATE_FAILED(404, "参数检验失败"),
-    UNAUTHORIZED(401, "暂未登录或token已经过期"),
-    FORBIDDEN(403, "没有相关权限");
+    SUCCESS(1000, "操作成功"),
+    PARMATER_FAILED(1001, "参数检验失败"),
+    UNAUTHORIZED(2000, "请先登录"),
+    TOKEN_EXPIRE(2001, "登录信息过期"),
+    FORBIDDEN(3000, "没有相关权限");
+
 
     long code;
 

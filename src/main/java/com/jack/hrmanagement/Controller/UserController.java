@@ -7,11 +7,17 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.bind.BindResult;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -24,18 +30,27 @@ public class UserController {
     @ApiOperation("用户登录")
     @RequestMapping(value = "login", method = RequestMethod.POST)
     @ResponseBody
-    public RequestResult userLogin(@RequestBody User user, BindResult result) {
+    public RequestResult userLogin(@Valid @RequestBody User user, BindingResult result) {
+
+        if (result.hasErrors()) {
+            for (ObjectError error : result.getAllErrors()) {
+                return RequestResult.parameterError(error.getDefaultMessage());
+            }
+        }
 
         logger.info("user login calls");
-        return RequestResult.success("hihi");
+        RequestResult data = RequestResult.success("欢迎：" + user.getUsername());
+        return data;
     }
+
 
     @ApiOperation("用户注册")
     @RequestMapping(value = "register", method = RequestMethod.POST)
     @ResponseBody
-    public RequestResult userRegister(@RequestBody User user) {
+    public RequestResult userRegister(@Valid @RequestBody User user) {
 
         logger.info("user login calls");
-        return RequestResult.success("注册成功");
+        RequestResult data = RequestResult.success("hihi");
+        return data;
     }
 }
