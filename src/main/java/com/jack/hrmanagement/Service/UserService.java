@@ -1,10 +1,10 @@
 package com.jack.hrmanagement.Service;
 
-import com.jack.hrmanagement.Dao.UserDao;
 import com.jack.hrmanagement.Model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
+
 
 public interface UserService {
 

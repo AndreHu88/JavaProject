@@ -1,11 +1,8 @@
 package com.jack.hrmanagement.Model;
 
 import io.swagger.annotations.ApiModelProperty;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 
 public class User {

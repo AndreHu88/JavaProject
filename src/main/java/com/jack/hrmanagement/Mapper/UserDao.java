@@ -1,6 +1,7 @@
-package com.jack.hrmanagement.Dao;
+package com.jack.hrmanagement.Mapper;
 
 import com.jack.hrmanagement.Model.User;
+
 
 public interface UserDao {
 
@@ -12,5 +13,6 @@ public interface UserDao {
 
     boolean refreshToken();
 
+    User getUserInfo(String userID);
 
 }

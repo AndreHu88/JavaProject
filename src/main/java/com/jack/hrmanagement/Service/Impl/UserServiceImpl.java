@@ -1,25 +1,28 @@
-package com.jack.hrmanagement.Service.Implementation;
+package com.jack.hrmanagement.Service.Impl;
 
-import com.jack.hrmanagement.Dao.UserDao;
+import com.jack.hrmanagement.Mapper.UserDao;
 import com.jack.hrmanagement.Model.User;
 import com.jack.hrmanagement.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
- * User Implementation
+ * User Impl
  *
  * @author Jack
  * @create 2019-08-28 16:23
  **/
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
-    private UserDao dao;
+    private UserDao userDao;
 
 
     @Override
@@ -36,6 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User selectUserByName(String userName) {
 
+        logger.debug(userName);
         return null;
     }
 }

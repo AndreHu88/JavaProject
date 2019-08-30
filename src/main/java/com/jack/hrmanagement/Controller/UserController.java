@@ -2,13 +2,12 @@ package com.jack.hrmanagement.Controller;
 
 import com.jack.hrmanagement.Common.RequestResult;
 import com.jack.hrmanagement.Model.User;
+import com.jack.hrmanagement.Service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.properties.bind.BindResult;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -26,6 +25,8 @@ import javax.validation.Valid;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
+    @Autowired
+    private UserService userService;
 
     @ApiOperation("用户登录")
     @RequestMapping(value = "login", method = RequestMethod.POST)
@@ -53,4 +54,15 @@ public class UserController {
         RequestResult data = RequestResult.success("hihi");
         return data;
     }
+
+    @ApiOperation("搜索用户")
+    @RequestMapping(value = "searchUserByUsername", method = RequestMethod.POST)
+    @ResponseBody
+    public RequestResult searchUserByUsername(@Valid @RequestBody String username) {
+
+        User searchUser = userService.selectUserByName(username);
+        RequestResult data = RequestResult.success(searchUser);
+        return data;
+    }
+
 }
