@@ -7,9 +7,11 @@
 
     <resultMap id="user" type="com.jack.hrmanagement.Model.User"></resultMap>
 
-    <select id="searchUserByUsername" resultType="User">
+    <select id="searchUserByUsername" parameterType="String" resultType="User">
         select * from user where username = #{username}
     </select>
+
+
 
 </mapper>
 

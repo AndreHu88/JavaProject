@@ -65,4 +65,14 @@ public class UserController {
         return data;
     }
 
+    @ApiOperation("删除用户")
+    @RequestMapping(value = "deleteUser", method = RequestMethod.POST)
+    @ResponseBody
+    public RequestResult deleteUserByUserID(@Valid @RequestBody String userID) {
+
+        User searchUser = userService.selectUserByName(userID);
+        RequestResult data = RequestResult.success(searchUser);
+        return data;
+    }
+
 }
